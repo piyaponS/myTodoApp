@@ -5,9 +5,12 @@ const dotenv = require("dotenv").config();
 port = process.env.PORT || 5000;
 const user = process.env.DB_USER;
 const password = process.env.DB_PASSWORD;
+const todos = require("./routes/todosRoute");
+const users = require("./routes/userRoute");
 
 app.use(express.json());
-
+app.use("/api/todos", todos);
+app.use("/api/users", users);
 mongoose
   .connect(
     `mongodb+srv://${user}:${password}@database.khjlk4g.mongodb.net/data?retryWrites=true&w=majority`
