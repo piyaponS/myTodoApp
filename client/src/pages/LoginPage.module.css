@@ -1,0 +1,54 @@
+.h1 {
+  font-size: 100px;
+  color: rebeccapurple;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  color: rebeccapurple;
+  background-color: #f5ba13;
+  font-size: 1.5rem;
+  padding: auto;
+  font-weight: bold;
+}
+.button:hover {
+  background-color: #e4cb86;
+  color: rgb(140, 113, 167);
+}
+.block {
+  text-align: center;
+  display: flexbox;
+  margin-bottom: 30px;
+  border: none;
+}
+
+.logo {
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  font-size: medium;
+}
+
+.h3 {
+  text-align: left;
+  margin-bottom: 10px;
+}
+.group {
+  display: flexbox;
+  text-align: center;
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  /* border: 1px solid; */
+}

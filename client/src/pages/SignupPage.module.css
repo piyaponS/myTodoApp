@@ -1,0 +1,61 @@
+.form {
+  display: flexbox;
+  text-align: center;
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  /* border: 1px solid; */
+}
+
+.header {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.h1 {
+  font-size: 50px;
+  color: rebeccapurple;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.logo {
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  font-size: medium;
+  margin-bottom: 10px;
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  color: rebeccapurple;
+  background-color: #f5ba13;
+  font-size: 1.5rem;
+  padding: auto;
+  font-weight: bold;
+  margin-top: 15px;
+}
+.button:hover {
+  background-color: #e4cb86;
+  color: rgb(140, 113, 167);
+}
+.h3 {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.p {
+  margin-top: 10px;
+  font-size: 18px;
+}
