@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiUserCircle } from "react-icons/bi";
 import classes from "./LoginPage.module.css";
 import Header from "../components/Header";
+import { useSelector, useDispatch } from "react-redux";
+import { reset, login } from "./../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
+import LoadingPage from "./LoadingPage";
 
 function LoginPage() {
   const [enteredData, setEnteredData] = useState({
@@ -9,9 +13,31 @@ function LoginPage() {
     password: "",
   });
   const { email, password } = enteredData;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, loading, success, error, message } = useSelector(
+    (state) => state.auth
+  );
+  useEffect(() => {
+    if (error) {
+      return;
+    }
+    if (success || user) {
+      navigate("/todos");
+    }
+    dispatch(reset());
+  }, [user, loading, success, error, message, dispatch, navigate]);
   const submitHandler = (event) => {
     event.preventDefault();
+    const userData = {
+      email,
+      password,
+    };
+    dispatch(login(userData));
   };
+  if (loading) {
+    return <LoadingPage />;
+  }
   const changeHandler = (event) => {
     setEnteredData((prev) => {
       return { ...prev, [event.target.name]: event.target.value };

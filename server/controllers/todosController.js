@@ -27,15 +27,13 @@ const deleteTodo = async (req, res) => {
     throw new Error("Todo not found");
   }
 
-  const user = await User.findById(req.user.id);
-
-  if (!user) {
+  if (!req.user) {
     res.status(401).json({
       message: "User not found",
     });
   }
   //Ensure the logged in user matched to the todo user
-  if (todo.user.toString() !== user.id) {
+  if (todo.user.toString() !== req.user.id) {
     res.status(401).json({
       message: "User not found",
     });

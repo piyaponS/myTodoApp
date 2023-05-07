@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import classes from "./SignupPage.module.css";
 import Header from "../components/Header";
-
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { reset, register } from "../features/auth/authSlice";
+import LoadingPage from "./LoadingPage";
 function SignupPage() {
   const [enteredData, setEnteredData] = useState({
     name: "",
@@ -11,9 +14,36 @@ function SignupPage() {
     confirmPassword: "",
   });
   const { name, email, password, confirmPassword } = enteredData;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user, loading, success, error, message } = useSelector(
+    (state) => state.auth
+  );
   const submitHandler = (event) => {
     event.preventDefault();
+    if (password !== confirmPassword) {
+      return;
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      };
+      dispatch(register(userData));
+    }
   };
+  useEffect(() => {
+    if (error) {
+      return;
+    }
+    if (success || user) {
+      navigate("/thank");
+    }
+    dispatch(reset());
+  }, [user, error, success, message, navigate, dispatch]);
+  if (loading) {
+    return <LoadingPage />;
+  }
   const changeHandler = (event) => {
     setEnteredData((prev) => {
       return { ...prev, [event.target.name]: event.target.value };

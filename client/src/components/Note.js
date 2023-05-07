@@ -7,7 +7,7 @@ const Note = (props) => {
   };
   return (
     <div className={classes.note}>
-      <p>{props.content}</p>
+      <p>{props.content.content}</p>
       <button onClick={clickHandler}>DELETE</button>
     </div>
   );

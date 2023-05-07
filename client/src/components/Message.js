@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import classes from "./Message.module.css";
+
 function Message(props) {
   const [message, setMessage] = useState({
     content: "",
   });
+
   const onSubmit = (event) => {
     event.preventDefault();
+
     props.onAdd(message);
+
     setMessage({
       content: "",
     });
   };
   const changeHandler = (event) => {
-    setMessage((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value,
-      };
+    setMessage({
+      content: event.target.value,
     });
   };
 

@@ -7,8 +7,10 @@ const user = process.env.DB_USER;
 const password = process.env.DB_PASSWORD;
 const todos = require("./routes/todosRoute");
 const users = require("./routes/userRoute");
+const cors = require("cors");
 
 app.use(express.json());
+app.use(cors());
 app.use("/api/todos", todos);
 app.use("/api/users", users);
 mongoose
