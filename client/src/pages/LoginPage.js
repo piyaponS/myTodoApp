@@ -22,7 +22,7 @@ function LoginPage() {
     if (error) {
       return;
     }
-    if (success || user) {
+    if (success && user.token) {
       navigate("/todos");
     }
     dispatch(reset());

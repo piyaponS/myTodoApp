@@ -9,7 +9,7 @@ const todoSchema = new mongoose.Schema(
     },
     content: {
       type: String,
-      required: true,
+      required: [true, "Please note your message"],
     },
   },
   {

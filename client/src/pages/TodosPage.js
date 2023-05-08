@@ -1,40 +1,64 @@
 import React, { useEffect } from "react";
+import classes from "./TodosPage.module.css";
 import HeaderLogout from "../components/HeaderLogout";
 import Footer from "./../components/Footer";
 import Note from "../components/Note";
 import Message from "../components/Message";
 import { useSelector, useDispatch } from "react-redux";
-import { postTodo } from "./../features/todos/todoSlice";
+import {
+  postTodo,
+  getTodos,
+  deleteTodo,
+  reset,
+} from "./../features/todos/todoSlice";
+import LoadingPage from "./LoadingPage";
 
 function TodosPage() {
   const dispatch = useDispatch();
-  const { todos } = useSelector((state) => state.todo);
+  const { todos, success, error, loading, message } = useSelector(
+    (state) => state.todo
+  );
 
   useEffect(() => {
-    console.log(todos); // Log the updated todos whenever it changes
-  }, [todos]);
+    if (error) {
+      console.error(error);
+    }
+
+    dispatch(getTodos());
+  }, [dispatch, success, error, message]);
 
   const addMessage = (message) => {
-    console.log(message);
     dispatch(postTodo(message));
+    dispatch(reset());
   };
 
-  const deleteMessage = () => {};
+  const deleteMessage = (id) => {
+    dispatch(deleteTodo(id));
+    dispatch(reset());
+  };
+  if (loading) {
+    return <LoadingPage />;
+  }
   return (
     <div>
       <HeaderLogout />
       <Message onAdd={addMessage} />
-
-      {todos.map((todo, index) => {
-        return (
-          <Note
-            key={index}
-            id={index}
-            content={todo}
-            onDelete={deleteMessage}
-          />
-        );
-      })}
+      {todos.length > 0 ? (
+        <div>
+          {todos.map((todo, index) => {
+            return (
+              <Note
+                key={index}
+                id={todo._id}
+                content={todo}
+                onDelete={deleteMessage}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <h3 className={classes.h3}>You have not set any todos</h3>
+      )}
 
       <Footer />
     </div>

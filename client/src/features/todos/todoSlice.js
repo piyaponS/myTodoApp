@@ -21,7 +21,7 @@ export const getTodos = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       };
-      const response = axios.get(`${backendURL}/api/todos`, config);
+      const response = await axios.get(`${backendURL}/api/todos`, config);
       return response.data;
     } catch (err) {
       const message =
@@ -45,6 +45,30 @@ export const postTodo = createAsyncThunk(
       const response = await axios.post(
         `${backendURL}/api/todos`,
         todo,
+        config
+      );
+      return response.data;
+    } catch (err) {
+      const message =
+        (err.response && err.response.data && err.response.data.message) ||
+        err.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const deleteTodo = createAsyncThunk(
+  "todo/deleteTodo",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.delete(
+        `${backendURL}/api/todos/${id}`,
         config
       );
       return response.data;
@@ -98,6 +122,21 @@ export const todoSlice = createSlice({
         state.error = true;
         state.message = action.payload;
         state.todos = [];
+      })
+      .addCase(deleteTodo.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteTodo.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.todos = state.todos.filter(
+          (todo) => todo._id !== action.payload.id
+        );
+      })
+      .addCase(deleteTodo.rejected, (state, action) => {
+        state.loading = false;
+        state.error = true;
+        state.message = action.payload;
       });
   },
 });
