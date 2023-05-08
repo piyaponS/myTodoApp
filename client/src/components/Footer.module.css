@@ -4,11 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #eee;
-  padding: 0 16px;
-}
-
 footer {
   position: absolute;
   text-align: center;

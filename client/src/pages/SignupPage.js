@@ -13,6 +13,7 @@ function SignupPage() {
     password: "",
     confirmPassword: "",
   });
+  const [isPasswordMatched, setIsPasswordMatched] = useState(false);
   const { name, email, password, confirmPassword } = enteredData;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function SignupPage() {
   const submitHandler = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
-      return;
+      setIsPasswordMatched(true);
     } else {
       const userData = {
         name,
@@ -49,6 +50,16 @@ function SignupPage() {
       return { ...prev, [event.target.name]: event.target.value };
     });
   };
+  const resetFieldsError = () => {
+    dispatch(reset());
+  };
+  const resetPasswordError = () => {
+    if (error) {
+      dispatch(reset());
+    } else {
+      setIsPasswordMatched(false);
+    }
+  };
   return (
     <>
       <Header />
@@ -71,6 +82,7 @@ function SignupPage() {
             value={name}
             placeholder="Enter your name"
             onChange={changeHandler}
+            onFocus={resetFieldsError}
           />
         </div>
         <div>
@@ -82,6 +94,7 @@ function SignupPage() {
             value={email}
             placeholder="Enter your email"
             onChange={changeHandler}
+            onFocus={resetFieldsError}
           />
         </div>
         <div>
@@ -93,6 +106,7 @@ function SignupPage() {
             value={password}
             placeholder="Enter your password"
             onChange={changeHandler}
+            onFocus={resetPasswordError}
           />
         </div>
         <div>
@@ -104,8 +118,17 @@ function SignupPage() {
             value={confirmPassword}
             placeholder="Confirm your password"
             onChange={changeHandler}
+            onFocus={resetPasswordError}
           />
         </div>
+        {isPasswordMatched && (
+          <div style={{ color: "red" }}>
+            The password confirmation does not match password
+          </div>
+        )}
+        {error && (
+          <div style={{ color: "red" }}>Please input all fields correctly</div>
+        )}
         <button type="submit" className={classes.button}>
           Create User
         </button>

@@ -21,11 +21,7 @@ function HeaderLogout() {
   };
   return (
     <header className={classes.Header}>
-      <div className={classes.logo}>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          Todo-List
-        </Link>
-      </div>
+      <div className={classes.logo}>Todo-List</div>
       <ul className={classes.select}>
         <li className={classes.welcome}>
           <div>{user && `Welcome: ${user.name}`}</div>

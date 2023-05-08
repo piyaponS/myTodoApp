@@ -43,6 +43,9 @@ function LoginPage() {
       return { ...prev, [event.target.name]: event.target.value };
     });
   };
+  const resetHandler = () => {
+    dispatch(reset());
+  };
   return (
     <>
       <Header />
@@ -63,6 +66,7 @@ function LoginPage() {
             placeholder="Enter your email"
             onChange={changeHandler}
             autoComplete="off"
+            onFocus={resetHandler}
           />
         </div>
         <div className={classes.block}>
@@ -76,8 +80,16 @@ function LoginPage() {
             placeholder="Enter your password"
             onChange={changeHandler}
             autoComplete="off"
+            onFocus={resetHandler}
           />
         </div>
+        {error ? (
+          <div style={{ marginBottom: "10px", color: "red" }}>
+            Please fill email or password correctly
+          </div>
+        ) : (
+          ""
+        )}
 
         <button className={classes.button} type="submit">
           Login

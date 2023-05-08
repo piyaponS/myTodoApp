@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Note.module.css";
+import { AiFillDelete } from "react-icons/ai";
 
 const Note = (props) => {
   const clickHandler = () => {
@@ -8,7 +9,9 @@ const Note = (props) => {
   return (
     <div className={classes.note}>
       <p>{props.content.content}</p>
-      <button onClick={clickHandler}>DELETE</button>
+      <button onClick={clickHandler}>
+        <AiFillDelete />
+      </button>
     </div>
   );
 };

@@ -11,18 +11,17 @@
 .note p {
   font-size: 1.1em;
   margin-bottom: 10px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
 }
 
 .note button {
+  background-color: #fff;
   position: relative;
   float: right;
-  margin-right: 10px;
-  color: #f5ba13;
+  margin-right: 5px;
+  font-size: 30px;
+  color: rgb(113, 57, 169);
   border: none;
   width: 36px;
   height: 36px;
   cursor: pointer;
-  outline: none;
 }

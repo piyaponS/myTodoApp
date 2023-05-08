@@ -5,11 +5,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <header className={classes.Header}>
-      <div className={classes.logo}>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          Todo-List
-        </Link>
-      </div>
+      <div className={classes.logo}>Todo-List</div>
       <ul className={classes.select}>
         <li className={classes.login}>
           <Link to="/" style={{ textDecoration: "none" }}>

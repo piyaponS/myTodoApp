@@ -57,7 +57,7 @@ function TodosPage() {
           })}
         </div>
       ) : (
-        <h3 className={classes.h3}>You have not set any todos</h3>
+        <h3 className={classes.h3}>You have not written any contents</h3>
       )}
 
       <Footer />
