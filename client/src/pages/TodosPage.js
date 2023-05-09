@@ -42,7 +42,7 @@ function TodosPage() {
     return <LoadingPagePro />;
   }
   return (
-    <div>
+    <div className={classes.group}>
       <HeaderLogout />
       <div className={classes.welcome}>{user && `Welcome: ${user.name}`}</div>
       <Message onAdd={addMessage} />
@@ -64,8 +64,9 @@ function TodosPage() {
           <h3 className={classes.h3}>You have not written any contents</h3>
         )}
       </div>
-
-      <Footer />
+      <div className={classes.footer}>
+        <Footer />
+      </div>
     </div>
   );
 }
