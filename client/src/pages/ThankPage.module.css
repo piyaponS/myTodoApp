@@ -29,6 +29,22 @@
 
 .logo {
   font-size: 150px;
-  margin-top: 50px;
+  margin-top: 120px;
   color: rebeccapurple;
+}
+
+@media (max-width: 767px) {
+  .logo {
+    font-size: 130px;
+    margin-top: 100px;
+    color: rebeccapurple;
+  }
+  .h1 {
+    font-size: 40px;
+    margin-top: 20px;
+  }
+  .p {
+    font-size: 20px;
+    margin-top: 15px;
+  }
 }

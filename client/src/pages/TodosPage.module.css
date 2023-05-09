@@ -4,3 +4,28 @@
   text-align: center;
   color: rebeccapurple;
 }
+.welcome {
+  color: rgb(47, 111, 214);
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  list-style-type: none;
+  text-align: center;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .box {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+  .welcome {
+    color: rgb(47, 111, 214);
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    list-style-type: none;
+    margin-top: 15px;
+    display: block;
+  }
+}

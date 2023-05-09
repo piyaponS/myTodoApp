@@ -52,3 +52,12 @@
   width: 40%;
   /* border: 1px solid; */
 }
+@media (max-width: 767px) {
+  .group {
+    display: flexbox;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+}

@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
 import classes from "./ThankPage.module.css";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
 function ThankPage() {
   return (
     <div className={classes.group}>
-      <Header />
       <div className={classes.logo}>
         <BsFillCheckCircleFill />
       </div>

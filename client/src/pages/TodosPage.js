@@ -4,6 +4,7 @@ import HeaderLogout from "../components/HeaderLogout";
 import Footer from "./../components/Footer";
 import Note from "../components/Note";
 import Message from "../components/Message";
+
 import { useSelector, useDispatch } from "react-redux";
 import {
   postTodo,
@@ -11,10 +12,11 @@ import {
   deleteTodo,
   reset,
 } from "./../features/todos/todoSlice";
-import LoadingPage from "./LoadingPage";
+import LoadingPagePro from "./LoadingPagePro";
 
 function TodosPage() {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
   const { todos, success, error, loading, message } = useSelector(
     (state) => state.todo
   );
@@ -37,28 +39,31 @@ function TodosPage() {
     dispatch(reset());
   };
   if (loading) {
-    return <LoadingPage />;
+    return <LoadingPagePro />;
   }
   return (
     <div>
       <HeaderLogout />
+      <div className={classes.welcome}>{user && `Welcome: ${user.name}`}</div>
       <Message onAdd={addMessage} />
-      {todos.length > 0 ? (
-        <div>
-          {todos.map((todo, index) => {
-            return (
-              <Note
-                key={index}
-                id={todo._id}
-                content={todo}
-                onDelete={deleteMessage}
-              />
-            );
-          })}
-        </div>
-      ) : (
-        <h3 className={classes.h3}>You have not written any contents</h3>
-      )}
+      <div className={classes.box}>
+        {todos.length > 0 ? (
+          <div>
+            {todos.map((todo, index) => {
+              return (
+                <Note
+                  key={index}
+                  id={todo._id}
+                  content={todo}
+                  onDelete={deleteMessage}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <h3 className={classes.h3}>You have not written any contents</h3>
+        )}
+      </div>
 
       <Footer />
     </div>

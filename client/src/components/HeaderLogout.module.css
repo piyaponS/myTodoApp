@@ -38,3 +38,31 @@
 .select {
   margin-top: 7px;
 }
+
+@media (max-width: 767px) {
+  .welcome {
+    color: rgb(47, 111, 214);
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    position: absolute;
+    right: 25px;
+
+    list-style-type: none;
+    display: none;
+  }
+  .logout {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 23px;
+    right: 25px;
+
+    list-style-type: none;
+  }
+  .logo {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 100;
+    font-size: 25px;
+    color: rebeccapurple;
+  }
+}

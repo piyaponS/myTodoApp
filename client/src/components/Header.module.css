@@ -26,23 +26,53 @@ header {
   font-size: 30px;
   color: rebeccapurple;
 }
-.register {
-  color: #fff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  position: absolute;
-  right: 20px;
-  list-style-type: none;
-}
+
+.register,
 .login {
   color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
+  list-style-type: none;
+}
+
+.register {
+  position: absolute;
+  right: 20px;
+}
+
+.login {
   position: absolute;
   right: 150px;
-  list-style-type: none;
 }
 
 .select {
   margin-top: 7px;
+}
+
+@media (max-width: 767px) {
+  header {
+    display: flexbox;
+  }
+  .Header {
+    padding: 10px;
+    align-items: left;
+  }
+
+  .logo {
+    margin-top: 5px;
+    margin-left: 15px;
+    display: flexbox;
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  .select {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .select li {
+    margin-top: 1px;
+    font-size: 20px;
+  }
 }

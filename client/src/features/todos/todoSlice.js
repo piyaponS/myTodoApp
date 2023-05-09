@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const backendURL = "http://127.0.0.1:8000";
+const backendURL = "https://gold-barnacle-wig.cyclic.app";
 
 const initialState = {
   todos: [],
